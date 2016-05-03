@@ -8,11 +8,7 @@ import ucar.nc2.NetcdfFile;
 import ucar.nc2.Variable;
 
 import java.io.*;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.ArrayList;
-import java.util.NavigableMap;
+import java.util.*;
 
 /**
  * Created by jorik on 3-5-2016.
@@ -54,11 +50,12 @@ public class RwsPrototype {
     private Map<Integer,Station> loadStations(NetcdfFile ncfile){
         Map<Integer,Station> stationsMap = new HashMap<>();
         Array names = getVarFromNc("nodenames",ncfile);
+        String[] strings = names.toString().split(",");
         Array lats = getVarFromNc("lat",ncfile);
         Array lons = getVarFromNc("lon",ncfile);
         System.out.println(lats.getSize());
         for (int index = 0; index < lats.getSize(); index++) {
-            String name = "test";
+            String name = strings[index];
             Float lat = lats.getFloat(index);
             Float lon = lons.getFloat(index);
             stationsMap.put(index,new Station(index,name,lat,lon,null));
