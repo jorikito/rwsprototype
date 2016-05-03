@@ -11,6 +11,8 @@ import java.io.*;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.ArrayList;
+import java.util.NavigableMap;
 
 /**
  * Created by jorik on 3-5-2016.
@@ -27,6 +29,7 @@ public class RwsPrototype {
         NetcdfFile ncfile = null;
         try {
             ncfile = NetcdfFile.open(filename);
+            //load in nodes with id, lat and lon
             loadNodesFromNCFile(ncfile);
         } catch (IOException ioe) {
             //log("trying to open " + filename, ioe);
@@ -37,11 +40,6 @@ public class RwsPrototype {
                 //log("trying to close " + filename, ioe);
             }
         }
-
-
-        //load in nodes with id, lat and lon
-
-
     }
 
     private void loadNodesFromNCFile(NetcdfFile ncfile) {
@@ -76,6 +74,14 @@ public class RwsPrototype {
             //log("trying to read " + varName, ioe);
         }
         return null;
+    }
+
+    private Array getVelocitiesFromNCFile(NetcdfFile ncfile) {
+        ArrayList<NavigableMap<Long,Double>> velocitiesPerStationArray = new ArrayList<>();
+        Array velocityArray = getVarFromNc("velocity",ncfile);
+
+//        for()
+        return velocityArray;
     }
 
 }

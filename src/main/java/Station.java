@@ -1,4 +1,5 @@
 import java.util.List;
+import java.util.NavigableMap;
 
 /**
  * Created by Wouter on 5/3/2016.
@@ -8,9 +9,9 @@ public class Station {
     String name;
     float lat;
     float lon;
-    List<Double> velocities;
+    NavigableMap<Long,Double> velocities;
 
-    public Station(long id, String name, float lat, float lon, List<Double> velocities) {
+    public Station(long id, String name, float lat, float lon,  NavigableMap<Long,Double> velocities) {
         this.id = id;
         this.name = name;
         this.lat = lat;
@@ -50,16 +51,15 @@ public class Station {
         this.lon = lon;
     }
 
-    public List<Double> getVelocities() {
+    public  NavigableMap<Long,Double> getVelocities() {
         return velocities;
     }
 
-    public void setVelocities(List<Double> velocities) {
+    public void setVelocities( NavigableMap<Long,Double> velocities) {
         this.velocities = velocities;
     }
-    public void addVelocity(Integer epoch,Double velocity){
-        this.velocities.add(epoch,velocity);
-    }
+
+
 
     @Override
     public String toString() {
