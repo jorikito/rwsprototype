@@ -60,4 +60,15 @@ public class Station {
     public void addVelocity(Integer epoch,Double velocity){
         this.velocities.add(epoch,velocity);
     }
+
+    @Override
+    public String toString() {
+        return "Station{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", lat=" + lat +
+                ", lon=" + lon +
+                ", velocities=" + velocities +
+                '}';
+    }
 }
