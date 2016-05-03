@@ -42,19 +42,22 @@ public class RwsPrototype {
     }
 
     private void loadNodesFromNCFile(NetcdfFile ncfile) {
-        String varName = "waterlevel";
+        Station station = loadStation(ncfile);
+        Array velocities = getVarFromNc("velocity",ncfile);
+    }
+    private Station loadStation(NetcdfFile ncfile){
+
+        return null;
+    }
+    private Array getVarFromNc(String varName,NetcdfFile ncfile){
         Variable v = ncfile.findVariable(varName);
-        if (null == v) return;
+        if (null == v) return null;
         try {
-            Array data = v.read("0:2:1, 0:19:1");
-            NCdumpW.printArray(data, varName,
-                    System.out, null);
+            return v.read();
         } catch (IOException ioe) {
             //log("trying to read " + varName, ioe);
-
-        } catch (InvalidRangeException e) {
-            //log("invalid Range for " + varName, e);
         }
+        return null;
     }
 
 }
