@@ -9,9 +9,9 @@ public class Station {
     String name;
     float lat;
     float lon;
-    NavigableMap<Long,Double> velocities;
+    NavigableMap<Long,Float> velocities;
 
-    public Station(long id, String name, float lat, float lon,  NavigableMap<Long,Double> velocities) {
+    public Station(long id, String name, float lat, float lon,  NavigableMap<Long,Float> velocities) {
         this.id = id;
         this.name = name;
         this.lat = lat;
@@ -51,11 +51,11 @@ public class Station {
         this.lon = lon;
     }
 
-    public  NavigableMap<Long,Double> getVelocities() {
+    public  NavigableMap<Long,Float> getVelocities() {
         return velocities;
     }
 
-    public void setVelocities( NavigableMap<Long,Double> velocities) {
+    public void setVelocities( NavigableMap<Long,Float> velocities) {
         this.velocities = velocities;
     }
 
