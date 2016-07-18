@@ -51,7 +51,7 @@ public class RwsPrototype {
         }
     }
     private Map<Integer,Station> loadStations(NetcdfFile ncfile){
-        Map<Integer,Station> stationsMap = new HashMap<>();
+        Map<Integer,Station> stationsMap = new HashMap();
         Array names = getVarFromNc("nodenames",ncfile);
         String[] strings = names.toString().split(",");
         Array lats = getVarFromNc("lat",ncfile);
@@ -63,7 +63,7 @@ public class RwsPrototype {
             String name = strings[index];
             Float lat = lats.getFloat(index);
             Float lon = lons.getFloat(index);
-            NavigableMap<Long,Float> velocitiesOfStation = getVelocitiesOfStation(times,velocities,index);
+            TreeMap<Long,Float> velocitiesOfStation = getVelocitiesOfStation(times,velocities,index);
             stationsMap.put(index,new Station(index,name,lat,lon,velocitiesOfStation));
         }
         return stationsMap;
@@ -80,8 +80,8 @@ public class RwsPrototype {
     }
 
     //gets map of velocities of ONE station
-    private NavigableMap<Long,Float> getVelocitiesOfStation(Array times, Array velocities, Integer stationIndex) {
-        NavigableMap<Long,Float> velocitiesOfStation = new TreeMap<>();
+    private TreeMap<Long,Float> getVelocitiesOfStation(Array times, Array velocities, Integer stationIndex) {
+        TreeMap<Long,Float> velocitiesOfStation = new TreeMap();
 //        NCdumpW.printArray(velocityArray, "henk",
 //                System.out, null);
         Index velocitiesIndex = velocities.getIndex();
