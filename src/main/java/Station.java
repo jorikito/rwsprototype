@@ -1,5 +1,6 @@
 import java.util.List;
 import java.util.NavigableMap;
+import java.util.TreeMap;
 
 /**
  * Created by Wouter on 5/3/2016.
@@ -9,9 +10,9 @@ public class Station {
     String name;
     float lat;
     float lon;
-    NavigableMap<Long,Float> velocities;
+    TreeMap<Long,Float> velocities;
 
-    public Station(long id, String name, float lat, float lon,  NavigableMap<Long,Float> velocities) {
+    public Station(long id, String name, float lat, float lon,  TreeMap<Long,Float> velocities) {
         this.id = id;
         this.name = name;
         this.lat = lat;
@@ -51,11 +52,11 @@ public class Station {
         this.lon = lon;
     }
 
-    public  NavigableMap<Long,Float> getVelocities() {
+    public  TreeMap<Long,Float> getVelocities() {
         return velocities;
     }
 
-    public void setVelocities( NavigableMap<Long,Float> velocities) {
+    public void setVelocities( TreeMap<Long,Float> velocities) {
         this.velocities = velocities;
     }
 
